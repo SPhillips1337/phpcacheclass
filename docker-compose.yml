@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+  www:
+    depends_on:
+    - db
+    image: php:apache
+    volumes:
+    - "./www:/var/www/html"
+    ports:
+    - 8080:80
